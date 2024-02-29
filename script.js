@@ -15,11 +15,27 @@ function spawn() {
     move.appendChild(div1);  
 }
 function jump() {
-    x = 20 
-    y = 50
-    const jumper = document.getElementById("jumper");
-    for (let i = 0; i < x; i++){
-        y - 1
-        jumper.style.top = "ypx";
+    y = 0
+    x = 30 
+    let rect;
+    for (let i = 0; i < x; i++) {
+        const jumper = document.getElementById("jumper");
+        jumper.style.position = "absolute";
+        rect = jumper.getBoundingClientRect();
+        jumper.style.top = `${rect.top - 1}px`;
+        y = y + 1
+        
+    }
+
+    if (y = 30) {
+        for (let j = 0; j < x; j++) {
+            const jumper = document.getElementById("jumper");
+            jumper.style.position = "absolute";
+            rect = jumper.getBoundingClientRect();
+            jumper.style.top = `${rect.top + 1}px`;
+            y = y - 1 
+        }
     }
 }
+        
+    
