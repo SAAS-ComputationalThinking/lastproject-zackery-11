@@ -13,32 +13,47 @@ function spawn() {
     div1.style.top = "55px";
     div1.style.right = "10px"
     move.appendChild(div1);  
-}
-function jump() {
-    y = 0
-    x = 30 
-    let rect;
-for (let p = 0; p < x; p++) {
-    setTimeout(function(index) {
-        return function() {
-            const jumper = document.getElementById("jumper");
-            jumper.style.position = "absolute";
-            rect = jumper.getBoundingClientRect();
-            jumper.style.top = `${rect.top - 1}px`;
-            y = y + 1;
-        };
-    }(i), i * 10); 
+    
 }
 
-    if (y = 30) {
-        for (let j = 0; j < x; j++) {
+
+
+
+
+
+    function jump() {
+        let y = 0;
+        let x = 50;
+        let rect;
+        
+        for (let p = 0; p < x; p++) {
             setTimeout(function(index) {
-                const jumper = document.getElementById("jumper");
-                jumper.style.position = "absolute";
-                rect = jumper.getBoundingClientRect();
-                jumper.style.top = `${rect.top + 1}px`;
-                y = y - 1 
-        }(i), i * 10); 
+                return function() {
+                    const jumper = document.getElementById("jumper");
+                    jumper.style.position = "absolute";
+                    rect = jumper.getBoundingClientRect();
+                    jumper.style.top = `${rect.top - 1}px`;
+                    y = y + 1;
+                    const x = 50;
+                    if (y === x) {
+                        movedown();
+                    }
+                };
+            }(p), p * 10); 
+        }
+    
+        function movedown() {
+            for (let j = 0; j < x; j++) {
+                setTimeout(function(index) {
+                    return function() {
+                        const jumper = document.getElementById("jumper");
+                        jumper.style.position = "absolute";
+                        rect = jumper.getBoundingClientRect();
+                        jumper.style.top = `${rect.top + 1}px`;
+                        y = y - 1;
+                    };
+                }(j), j * 10); 
+            }
         }
     }
-}
+    
