@@ -3,7 +3,9 @@ const begin = document.getElementById("begin");
 document.addEventListener("click",jump)
 begin.addEventListener("click",spawn)
 function spawn() {
+    let rect
     let div1;
+    let m = 1;
     const move = document.getElementById("move");
     div1 = document.createElement('div');
     div1.style.backgroundColor = "red";
@@ -13,8 +15,11 @@ function spawn() {
     div1.style.top = "55px";
     div1.style.right = "10px"
     move.appendChild(div1);  
-    
 }
+
+
+
+
 
 
 
