@@ -3,7 +3,7 @@ const begin = document.getElementById("begin");
 document.addEventListener("click",jump)
 begin.addEventListener("click",spawn)
 function spawn() {
-    let rect
+    let rect;
     let div1;
     let m = 1;
     const move = document.getElementById("move");
@@ -14,9 +14,23 @@ function spawn() {
     div1.style.position = "absolute";
     div1.style.top = "55px";
     div1.style.right = "10px"
-    move.appendChild(div1);  
+    move.appendChild(div1);
+    go();
+    function go() {
+        let z = 100
+        let rect;
+        let div1;
+        let move;
+        for (let l = 0; l < z; l++) {
+            setTimeout(function(index) {
+                rect = div1.getBoundingClientRect();
+                console.log(rect.left, rect.bottom, rect.top, rect.right);
+                div1.style.left = `${rect.left - 1}px`;
+            }(l), l * 10);
+        }
+    }
 }
-
+    
 
 
 
