@@ -30,14 +30,6 @@ function spawn() {
         }
     }
 }
-    
-
-
-
-
-
-
-
 
 
     function jump() {
