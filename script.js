@@ -1,3 +1,4 @@
+
 const jumper = document.getElementById("jumper");
 const begin = document.getElementById("begin");
 document.addEventListener("keydown",jump)
@@ -26,45 +27,48 @@ function spawn() {
                     rect = div1.getBoundingClientRect();
                     div1.style.left = `${rect.left - 1}px`;
                 };
-            }(l), l * 10);
+            }(l), l * 15);
         }
     }
 }
 
 function jump() {
     if (event.code === 'Space') {
-        let y = 0;
-        let x = 50;
-        let rect; 
-        for (let p = 0; p < x; p++) {
-            setTimeout(function(index) {
-                return function() {
-                    const jumper = document.getElementById("jumper");
-                    jumper.style.position = "absolute";
-                    rect = jumper.getBoundingClientRect();
-                    jumper.style.top = `${rect.top - 1}px`;
-                    y = y + 1;
-                    const x = 50;
-                    if (y === x) {
-                        movedown();
-                    }
-                };
-            }(p), p * 10); 
-        }
-        
-        function movedown() {
-            for (let j = 0; j < x; j++) {
+        const jumper = document.getElementById("jumper");
+        rect = jumper.getBoundingClientRect();
+        if (rect.top === 300) {
+            let y = 0;
+            let x = 50;
+            let rect; 
+            for (let p = 0; p < x; p++) {
                 setTimeout(function(index) {
                     return function() {
                         const jumper = document.getElementById("jumper");
                         jumper.style.position = "absolute";
                         rect = jumper.getBoundingClientRect();
-                        jumper.style.top = `${rect.top + 1}px`;
-                        y = y - 1;
+                        jumper.style.top = `${rect.top - 1}px`;
+                        y = y + 1;
+                        const x = 50;
+                        if (y === x) {
+                            movedown();
+                        }
                     };
-                }(j), j * 10); 
+                }(p), p * 10); 
+            }
+            
+            function movedown() {
+                for (let j = 0; j < x; j++) {
+                    setTimeout(function(index) {
+                        return function() {
+                            const jumper = document.getElementById("jumper");
+                            jumper.style.position = "absolute";
+                            rect = jumper.getBoundingClientRect();
+                            jumper.style.top = `${rect.top + 1}px`;
+                            y = y - 1;
+                        };
+                    }(j), j * 10); 
+                }
             }
         }
     }
 }
-
