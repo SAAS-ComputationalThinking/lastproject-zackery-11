@@ -1,6 +1,6 @@
 const jumper = document.getElementById("jumper");
 const begin = document.getElementById("begin");
-document.addEventListener("click",jump)
+document.addEventListener("keydown",jump)
 begin.addEventListener("click",spawn)
 function spawn() {
     let rect;
@@ -13,30 +13,29 @@ function spawn() {
     div1.style.height = "20px";
     div1.style.position = "absolute";
     div1.style.top = "55px";
-    div1.style.right = "10px"
+    div1.style.left = "50px"
     move.appendChild(div1);
     go();
     function go() {
-        let z = 100
+        const move = document.getElementById("move");
+        let z = 125;
         let rect;
-        let div1;
-        let move;
-        for (let l = 0; l < z; l++) {
+        for (let l = 1; l < z; l++) {  
             setTimeout(function(index) {
-                rect = div1.getBoundingClientRect();
-                console.log(rect.left, rect.bottom, rect.top, rect.right);
-                div1.style.left = `${rect.left - 1}px`;
+                return function() {
+                    rect = div1.getBoundingClientRect();
+                    div1.style.left = `${rect.left - 1}px`;
+                };
             }(l), l * 10);
         }
     }
 }
 
-
-    function jump() {
+function jump() {
+    if (event.code === 'Space') {
         let y = 0;
         let x = 50;
-        let rect;
-        
+        let rect; 
         for (let p = 0; p < x; p++) {
             setTimeout(function(index) {
                 return function() {
@@ -52,7 +51,7 @@ function spawn() {
                 };
             }(p), p * 10); 
         }
-    
+        
         function movedown() {
             for (let j = 0; j < x; j++) {
                 setTimeout(function(index) {
@@ -67,4 +66,5 @@ function spawn() {
             }
         }
     }
-    
+}
+
