@@ -1,0 +1,28 @@
+
+#jumper {
+    height: 50px;
+    width: 50px;
+    background-color: blue;
+    left: 700px;
+    position: absolute;
+    top: 300px;
+}
+#floor {
+    height: 75px;
+    width: 800px;
+    background-color: black;
+    position: absolute;
+    top: 350px;
+}
+#begin {
+    position: absolute;
+}
+#body {
+    position: relative;
+}
+#move {
+    height: 75px;
+    width: 800px;
+    position: absolute;
+    top: 275px;
+}
